@@ -1,20 +1,25 @@
-import React, { useState }from "react";
-import { Modal, Button} from "react-bootstrap";
+import React, { useState } from "react";
+import { Modal, Button } from "react-bootstrap";
 
-
-function CreateList(props) {
+function UpdateList(props) {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    return(
+
+    return (
       <React.Fragment>
-        <Button variant="primary" onClick={handleShow}>
-          Create New List
+        <Button variant="primary" 
+        onClick={(evt)=> {
+        handleShow();
+        props.getList(evt,props.elementId);
+        }}
+        >
+          Update
         </Button>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>New List</Modal.Title>
+            <Modal.Title>Update List</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <input
@@ -25,26 +30,27 @@ function CreateList(props) {
               onChange={props.handleChange}
               className="d-block my-3"
             />
-            <input
-              type="text"
+            <input type="text"
               placeholder="Author"
               name="author"
               value={props.singledata.author}
               onChange={props.handleChange}
               className="d-block my-3"
-            />
+            >
+            </input>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button variant="primary" 
-            onClick= {() => {
-              handleClose();
-              props.createList();
-            }}
+            <Button
+              variant="primary"
+              onClick={(event) => {
+                handleClose();
+                props.updateList(event,props.elementId);
+              }}
             >
-              Create
+              Update
             </Button>
           </Modal.Footer>
         </Modal>
@@ -52,4 +58,4 @@ function CreateList(props) {
     );
 }
 
-export default CreateList;
+export default UpdateList;

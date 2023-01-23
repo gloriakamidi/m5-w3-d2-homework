@@ -19,6 +19,16 @@
       "id": 4,
       "title": "A Tale of Two Cities",
       "author": "Charles Dickens"
+    },
+    {
+      "title": "Ce Que Vivent Les Roses",
+      "author": "Marry H. Clark",
+      "id": 5
+    },
+    {
+      "title": "123...4 Soleil",
+      "author": "GLK",
+      "id": 6
     }
   ]
 }
